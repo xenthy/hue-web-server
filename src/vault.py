@@ -1,5 +1,6 @@
 from logger import logging, LOG_FILE, FORMATTER, TIMESTAMP, LOG_LEVEL
 logger = logging.getLogger(__name__)
+logger.setLevel(LOG_LEVEL)
 
 formatter = logging.Formatter(FORMATTER, TIMESTAMP)
 
@@ -33,10 +34,34 @@ class Vault():
     @staticmethod
     def get_username():
         return Vault.__hue_username
-    
+
     @staticmethod
     def get_url() -> str:
         return "http://" + Vault.get_ip() + "/api/" + Vault.get_username() + "/"
+
+    @staticmethod
+    def set_lights(lights):
+        Vault.__lights = lights
+
+    @staticmethod
+    def get_lights():
+        return Vault.__lights
+
+    @staticmethod
+    def set_groups(groups):
+        Vault.__groups = groups
+
+    @staticmethod
+    def get_groups():
+        return Vault.__groups
+
+    @staticmethod
+    def set_scenes(scenes):
+        Vault.__scenes = scenes
+
+    @staticmethod
+    def get_scenes():
+        return Vault.__scenes
 
 
 if __name__ == "__main__":
